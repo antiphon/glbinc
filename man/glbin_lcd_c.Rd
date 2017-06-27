@@ -41,4 +41,6 @@ glbin_lcd_c(X, y, offset, index, eps = 1e-04, lambda, lambda.min = 0.001,
 \description{
 Like in Breheny and Huang 2009
 }
-
+\details{
+Like in Breheny and Huang 2009 except this version includes offset terms.
+}

@@ -35,4 +35,3 @@ Compute the maximum penalty, possibly sparse
 \details{
 See glbin for details of the parameters
 }
-

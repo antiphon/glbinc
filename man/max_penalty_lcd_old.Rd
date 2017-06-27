@@ -21,4 +21,3 @@ Compute the maximal penalty for lcd
 \details{
 See glbin for details of the parameters
 }
-

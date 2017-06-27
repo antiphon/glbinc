@@ -32,4 +32,3 @@ glbin_lcd(X, y, offset, index, eps = 1e-04, lambda, lambda.min = 0.01,
 \description{
 Like in Breheny and Huang 2009
 }
-

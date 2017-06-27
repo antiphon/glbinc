@@ -39,4 +39,3 @@ glbin_lcd_c_std(X, y, offset, index, eps = 1e-04, lambda,
 \description{
 Like in Breheny and Huang 2009
 }
-

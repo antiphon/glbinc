@@ -4,8 +4,8 @@
 #'
 #' @param X covariate/design matrix. Global intercept should not be here. sparseMatrix accepted.
 #' @param y response 0/1 vector
-#' @param index grouping. set 0 or NA for unpenalised terms. if not given, assumes X[,1] is intercept
 #' @param offset offset terms
+#' @param index grouping. set 0 or NA for unpenalised terms.
 #' @param eps convergence criterion
 #' @param lambda vector of lambdas
 #' @param lambda.min fraction of max lambda to go down to
@@ -16,6 +16,9 @@
 #' @param AIC_stop default 0. After aic has increased this many steps, halt. 0: go to the end of lambda. If used, should be more than 1.
 #' @param verb verbosity
 #' @param gc_force FALSE. force garbage collection before going c-side? Might free memory for large X.
+#'
+#' @details
+#' Like in Breheny and Huang 2009 except with an offset term and sparse matrix support (Matrix-class) for large data.
 #'
 #' @import Matrix
 #' @useDynLib glbinc

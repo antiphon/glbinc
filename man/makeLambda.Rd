@@ -21,4 +21,3 @@ makeLambda(nlambda = 100, lambda.min = 0.001, ..., lambda.max,
 \description{
 Create the lambda vector
 }
-

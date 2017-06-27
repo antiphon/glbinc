@@ -25,4 +25,3 @@ Copied from grpreg
 \details{
 See glbin for details of the parameters
 }
-

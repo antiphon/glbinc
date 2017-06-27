@@ -17,6 +17,9 @@
 #' @param verb verbosity
 #' @param gc_force FALSE. force garbage collection before going c-side? Might free memory for large X.
 #'
+#' @details
+#' Like in Breheny and Huang 2009 except this version includes offset terms.
+#'
 #' @useDynLib glbinc
 #' @export
 

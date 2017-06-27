@@ -16,7 +16,7 @@ glbin_lcd_c_sparse(X, y, offset, index, eps = 1e-04, lambda,
 
 \item{offset}{offset terms}
 
-\item{index}{grouping. set 0 or NA for unpenalised terms. if not given, assumes X[,1] is intercept}
+\item{index}{grouping. set 0 or NA for unpenalised terms.}
 
 \item{eps}{convergence criterion}
 
@@ -41,4 +41,6 @@ glbin_lcd_c_sparse(X, y, offset, index, eps = 1e-04, lambda,
 \description{
 Like in Breheny and Huang 2009
 }
-
+\details{
+Like in Breheny and Huang 2009 except with an offset term and sparse matrix support (Matrix-class) for large data.
+}
