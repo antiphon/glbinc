@@ -25,24 +25,30 @@
 #' @export
 
 glbin_lcd_c_sparse <- function(X,
-                        y,
-                        offset,
-                        index,
-                        eps = 1e-4,
-                        lambda,
-                        lambda.min = 0.001,
-                        nlambda = 100,
-                        lambda.log = TRUE,
-                        dfmax = ncol(X)+1,
-                        verb=1,
-                        add_intercept = TRUE,
-                        std = TRUE,
-                        alpha = 1,
-                        maxit = 1000,
-                        AIC_stop = 0,
-                        gc_force = FALSE
+                               y,
+                               offset,
+                               index,
+                               eps = 1e-4,
+                               lambda,
+                               lambda.min = 0.001,
+                               nlambda = 100,
+                               lambda.log = TRUE,
+                               dfmax = ncol(X)+1,
+                               verb=1,
+                               add_intercept = TRUE,
+                               std = TRUE,
+                               alpha = 1,
+                               maxit = 1000,
+                               AIC_stop = 0,
+                               gc_force = FALSE,
+                               penalty = "grLasso",
+                               pen_tuning = 0 # for SCAD and MCP
 ) {
-
+  # check penalty
+  ok_penalties <- c("grLasso", "grMCP", "grSCAD" )
+  penalty_i <- pmatch(tolower(penalty), tolower(ok_penalties) ) -  1
+  if(is.na(penalty_i)) stop(paste("penalty should be one of:", paste(ok_penalties, collapse=", ")))
+  if(pen_tuning == 0 & penalty_i > 0) pen_tuning <- pen_tuning + 2
   # check for global intercept
   int_i <- all(X[,1]==1)
   # drop it from X if exists
@@ -115,7 +121,9 @@ glbin_lcd_c_sparse <- function(X,
                                eps,
                                dfmax,
                                maxit,
-                               AIC_stop
+                               AIC_stop,
+                               penalty_i,
+                               pen_tuning
   )
 
   beta_res <- out$beta
@@ -149,7 +157,9 @@ glbin_lcd_c_sparse <- function(X,
   #
   index_out <- index
   if(add_intercept) index_out <- c(0, index_out)
-  z <- list(beta=beta_res, lambda=lambda_vec, df = df, logLik = lik, aic=aic, index = index_out)
+  z <- list(beta=beta_res, lambda=lambda_vec, df = df,
+            logLik = lik, aic=aic, index = index_out,
+            penalty = ok_penalties[penalty_i+1], pen_tuning = pen_tuning)
   class(z) <- c("glbin", is(z))
   z
 }

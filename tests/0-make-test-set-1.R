@@ -1,6 +1,6 @@
 # Make test set 1
 
-P <- 3
+P <- 9
 N <- 1000
 beta <- rnorm(P+1, 1, 2) # inc. intercept
 # set first 30% to zero

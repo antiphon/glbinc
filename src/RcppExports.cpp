@@ -6,8 +6,8 @@
 using namespace Rcpp;
 
 // glbin_lcd_cpp
-List glbin_lcd_cpp(NumericMatrix X, NumericVector y, NumericVector offset, int G0, IntegerVector G1, NumericVector group_weight, NumericVector lambda, bool add_intercept, double alpha, int verb, double eps, int dfmax, int maxiter, int AIC_stop);
-RcppExport SEXP glbinc_glbin_lcd_cpp(SEXP XSEXP, SEXP ySEXP, SEXP offsetSEXP, SEXP G0SEXP, SEXP G1SEXP, SEXP group_weightSEXP, SEXP lambdaSEXP, SEXP add_interceptSEXP, SEXP alphaSEXP, SEXP verbSEXP, SEXP epsSEXP, SEXP dfmaxSEXP, SEXP maxiterSEXP, SEXP AIC_stopSEXP) {
+List glbin_lcd_cpp(NumericMatrix X, NumericVector y, NumericVector offset, int G0, IntegerVector G1, NumericVector group_weight, NumericVector lambda, bool add_intercept, double alpha, int verb, double eps, int dfmax, int maxiter, int AIC_stop, int penalty, double pen_tuning);
+RcppExport SEXP glbinc_glbin_lcd_cpp(SEXP XSEXP, SEXP ySEXP, SEXP offsetSEXP, SEXP G0SEXP, SEXP G1SEXP, SEXP group_weightSEXP, SEXP lambdaSEXP, SEXP add_interceptSEXP, SEXP alphaSEXP, SEXP verbSEXP, SEXP epsSEXP, SEXP dfmaxSEXP, SEXP maxiterSEXP, SEXP AIC_stopSEXP, SEXP penaltySEXP, SEXP pen_tuningSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -25,13 +25,15 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< int >::type dfmax(dfmaxSEXP);
     Rcpp::traits::input_parameter< int >::type maxiter(maxiterSEXP);
     Rcpp::traits::input_parameter< int >::type AIC_stop(AIC_stopSEXP);
-    rcpp_result_gen = Rcpp::wrap(glbin_lcd_cpp(X, y, offset, G0, G1, group_weight, lambda, add_intercept, alpha, verb, eps, dfmax, maxiter, AIC_stop));
+    Rcpp::traits::input_parameter< int >::type penalty(penaltySEXP);
+    Rcpp::traits::input_parameter< double >::type pen_tuning(pen_tuningSEXP);
+    rcpp_result_gen = Rcpp::wrap(glbin_lcd_cpp(X, y, offset, G0, G1, group_weight, lambda, add_intercept, alpha, verb, eps, dfmax, maxiter, AIC_stop, penalty, pen_tuning));
     return rcpp_result_gen;
 END_RCPP
 }
 // glbin_lcd_sparse_cpp
-List glbin_lcd_sparse_cpp(SEXP X, NumericVector y, NumericVector offset, NumericVector center, NumericVector scale, int G0, IntegerVector G1, NumericVector group_weight, NumericVector lambda, bool add_intercept, double alpha, int verb, double eps, int dfmax, int maxiter, int AIC_stop);
-RcppExport SEXP glbinc_glbin_lcd_sparse_cpp(SEXP XSEXP, SEXP ySEXP, SEXP offsetSEXP, SEXP centerSEXP, SEXP scaleSEXP, SEXP G0SEXP, SEXP G1SEXP, SEXP group_weightSEXP, SEXP lambdaSEXP, SEXP add_interceptSEXP, SEXP alphaSEXP, SEXP verbSEXP, SEXP epsSEXP, SEXP dfmaxSEXP, SEXP maxiterSEXP, SEXP AIC_stopSEXP) {
+List glbin_lcd_sparse_cpp(SEXP X, NumericVector y, NumericVector offset, NumericVector center, NumericVector scale, int G0, IntegerVector G1, NumericVector group_weight, NumericVector lambda, bool add_intercept, double alpha, int verb, double eps, int dfmax, int maxiter, int AIC_stop, int penalty, double pen_tuning);
+RcppExport SEXP glbinc_glbin_lcd_sparse_cpp(SEXP XSEXP, SEXP ySEXP, SEXP offsetSEXP, SEXP centerSEXP, SEXP scaleSEXP, SEXP G0SEXP, SEXP G1SEXP, SEXP group_weightSEXP, SEXP lambdaSEXP, SEXP add_interceptSEXP, SEXP alphaSEXP, SEXP verbSEXP, SEXP epsSEXP, SEXP dfmaxSEXP, SEXP maxiterSEXP, SEXP AIC_stopSEXP, SEXP penaltySEXP, SEXP pen_tuningSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -51,13 +53,15 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< int >::type dfmax(dfmaxSEXP);
     Rcpp::traits::input_parameter< int >::type maxiter(maxiterSEXP);
     Rcpp::traits::input_parameter< int >::type AIC_stop(AIC_stopSEXP);
-    rcpp_result_gen = Rcpp::wrap(glbin_lcd_sparse_cpp(X, y, offset, center, scale, G0, G1, group_weight, lambda, add_intercept, alpha, verb, eps, dfmax, maxiter, AIC_stop));
+    Rcpp::traits::input_parameter< int >::type penalty(penaltySEXP);
+    Rcpp::traits::input_parameter< double >::type pen_tuning(pen_tuningSEXP);
+    rcpp_result_gen = Rcpp::wrap(glbin_lcd_sparse_cpp(X, y, offset, center, scale, G0, G1, group_weight, lambda, add_intercept, alpha, verb, eps, dfmax, maxiter, AIC_stop, penalty, pen_tuning));
     return rcpp_result_gen;
 END_RCPP
 }
 // glbin_lcd_std_cpp
-List glbin_lcd_std_cpp(NumericMatrix X, NumericVector y, NumericVector offset, int G0, IntegerVector G1, NumericVector group_weight, NumericVector lambda, bool add_intercept, double alpha, int verb, double eps, int dfmax, int maxiter, int AIC_stop);
-RcppExport SEXP glbinc_glbin_lcd_std_cpp(SEXP XSEXP, SEXP ySEXP, SEXP offsetSEXP, SEXP G0SEXP, SEXP G1SEXP, SEXP group_weightSEXP, SEXP lambdaSEXP, SEXP add_interceptSEXP, SEXP alphaSEXP, SEXP verbSEXP, SEXP epsSEXP, SEXP dfmaxSEXP, SEXP maxiterSEXP, SEXP AIC_stopSEXP) {
+List glbin_lcd_std_cpp(NumericMatrix X, NumericVector y, NumericVector offset, int G0, IntegerVector G1, NumericVector group_weight, NumericVector lambda, bool add_intercept, double alpha, int verb, double eps, int dfmax, int maxiter, int AIC_stop, int penalty, double pen_tuning);
+RcppExport SEXP glbinc_glbin_lcd_std_cpp(SEXP XSEXP, SEXP ySEXP, SEXP offsetSEXP, SEXP G0SEXP, SEXP G1SEXP, SEXP group_weightSEXP, SEXP lambdaSEXP, SEXP add_interceptSEXP, SEXP alphaSEXP, SEXP verbSEXP, SEXP epsSEXP, SEXP dfmaxSEXP, SEXP maxiterSEXP, SEXP AIC_stopSEXP, SEXP penaltySEXP, SEXP pen_tuningSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -75,7 +79,9 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< int >::type dfmax(dfmaxSEXP);
     Rcpp::traits::input_parameter< int >::type maxiter(maxiterSEXP);
     Rcpp::traits::input_parameter< int >::type AIC_stop(AIC_stopSEXP);
-    rcpp_result_gen = Rcpp::wrap(glbin_lcd_std_cpp(X, y, offset, G0, G1, group_weight, lambda, add_intercept, alpha, verb, eps, dfmax, maxiter, AIC_stop));
+    Rcpp::traits::input_parameter< int >::type penalty(penaltySEXP);
+    Rcpp::traits::input_parameter< double >::type pen_tuning(pen_tuningSEXP);
+    rcpp_result_gen = Rcpp::wrap(glbin_lcd_std_cpp(X, y, offset, G0, G1, group_weight, lambda, add_intercept, alpha, verb, eps, dfmax, maxiter, AIC_stop, penalty, pen_tuning));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -144,9 +150,9 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"glbinc_glbin_lcd_cpp", (DL_FUNC) &glbinc_glbin_lcd_cpp, 14},
-    {"glbinc_glbin_lcd_sparse_cpp", (DL_FUNC) &glbinc_glbin_lcd_sparse_cpp, 16},
-    {"glbinc_glbin_lcd_std_cpp", (DL_FUNC) &glbinc_glbin_lcd_std_cpp, 14},
+    {"glbinc_glbin_lcd_cpp", (DL_FUNC) &glbinc_glbin_lcd_cpp, 16},
+    {"glbinc_glbin_lcd_sparse_cpp", (DL_FUNC) &glbinc_glbin_lcd_sparse_cpp, 18},
+    {"glbinc_glbin_lcd_std_cpp", (DL_FUNC) &glbinc_glbin_lcd_std_cpp, 16},
     {"glbinc_glm_binom_std_c", (DL_FUNC) &glbinc_glm_binom_std_c, 11},
     {"glbinc_glm_binom_std_sparse_c", (DL_FUNC) &glbinc_glm_binom_std_sparse_c, 11},
     {"glbinc_rcpp_hello", (DL_FUNC) &glbinc_rcpp_hello, 0},

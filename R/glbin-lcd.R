@@ -12,6 +12,10 @@
 #' @param nlambda number of penalties
 #' @param dfmax max df, stop if reached
 #' @param verb verbosity
+#'
+#' @details
+#' Slow R version, see glbin_lcd_c and glbin_lcd_sparse_c.
+#'
 #' @export
 
 glbin_lcd <- function(X,

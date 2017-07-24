@@ -19,7 +19,8 @@ void gd_binomial(NumericMatrix& beta,
                  int l,
                  double l1, double l2,
                  NumericVector& df,
-                 NumericVector& betaold){
+                 NumericVector& betaold,
+                 int penalty, double pen_tuning){
   int G, i, j;
   int n = X.nrow();
   double nd = (double) n;
@@ -32,7 +33,9 @@ void gd_binomial(NumericMatrix& beta,
 
   for(j=G1(g); j < G1(g+1); j++) z(j-G1(g)) = crossprod(X, r, j)/nd + betaold(j);
   z_norm = norm(z);
-  len = S(v * z_norm, l1) / ( v * (1 + l2));
+  if(penalty == 0)      { len = S(v * z_norm, l1) / ( v * (1 + l2));} //Group Lasso
+  else if(penalty == 1) { len = F(v * z_norm, l1, l2, pen_tuning) / v; }// MCP
+  else                  { len = Fs(v * z_norm, l1, l2, pen_tuning) / v; }//SCAD
 
   if(len != 0 | betaold(G1(g)) != 0) {
     for(j = G1(g); j < G1(g+1); j++) {
@@ -63,7 +66,9 @@ List glbin_lcd_cpp(NumericMatrix X,
                    double eps,
                    int dfmax,
                    int maxiter,
-                   int AIC_stop
+                   int AIC_stop,
+                   int penalty, // 0:lasso 1:mcp 2:scad
+                   double pen_tuning
 ) {
 
   int n = X.nrow();
@@ -212,7 +217,7 @@ List glbin_lcd_cpp(NumericMatrix X,
           if(e(g)!=0) {
             l1 = lambda(l) * group_weight(g) * alpha;// lasso
             l2 = lambda(l) * group_weight(g) * (1-alpha);// ridge
-            gd_binomial(beta, X, r, eta, g, G1, l, l1, l2, df, betaold);
+            gd_binomial(beta, X, r, eta, g, G1, l, l1, l2, df, betaold, penalty, pen_tuning);
           }
         }
 
@@ -233,7 +238,7 @@ List glbin_lcd_cpp(NumericMatrix X,
         if(e(g)==0) {
           l1 = lambda(l) * group_weight(g) * alpha;// lasso
           l2 = lambda(l) * group_weight(g) * (1-alpha);// ridge
-          gd_binomial(beta, X, r, eta, g, G1, l, l1, l2, df, betaold);
+          gd_binomial(beta, X, r, eta, g, G1, l, l1, l2, df, betaold, penalty, pen_tuning);
           if(beta(G1(g),l) != 0) { // check if group has activated
             e(g) = 1;
             violations++;

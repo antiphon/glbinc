@@ -8,3 +8,5 @@ double getXij(NumericVector &data, IntegerVector &mi, IntegerVector &mp, int ri,
 bool checkConvergence(NumericMatrix& beta, NumericVector& betaold, int l, double eps) ;
 double norm(NumericVector& z) ;
 double S(double a, double b);
+double F(double z, double l1, double l2, double gamma);
+double Fs(double z, double l1, double l2, double gamma);

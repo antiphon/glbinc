@@ -17,11 +17,11 @@ double crossprod_sparse_std(NumericVector &data, IntegerVector &mi, IntegerVecto
   return val;
 }
 
-double S2(double a, double b){
-  if(a > b) return a-b;
-  if(a < -b) return a+b;
-  return 0;
-}
+// double S2(double a, double b){
+//   if(a > b) return a-b;
+//   if(a < -b) return a+b;
+//   return 0;
+// }
 
 void gd_binomial_sparse(NumericMatrix& beta,
                        NumericVector &md,
@@ -36,7 +36,10 @@ void gd_binomial_sparse(NumericMatrix& beta,
                        int l,
                        double l1, double l2,
                        NumericVector& df,
-                       NumericVector& betaold){
+                       NumericVector& betaold,
+                       int penalty, // 0:lasso 1:mcp 2:scad
+                       double pen_tuning
+                       ){
   int G, i, j, k;
   int n = r.size();
   double nd = (double) n;
@@ -49,7 +52,10 @@ void gd_binomial_sparse(NumericMatrix& beta,
 
   for(j=G1(g); j < G1(g+1); j++) z(j-G1(g)) = crossprod_sparse_std(md, mi, mp, center, scale, r, j)/nd + betaold(j);
   z_norm = norm(z);
-  len = S2(v * z_norm, l1) / ( v * (1 + l2));
+  //len = S2(v * z_norm, l1) / ( v * (1 + l2));
+  if(penalty == 0)      { len = S(v * z_norm, l1) / ( v * (1 + l2));} //Group Lasso
+  else if(penalty == 1) { len = F(v * z_norm, l1, l2, pen_tuning) / v; }// MCP
+  else                  { len = Fs(v * z_norm, l1, l2, pen_tuning) / v; }//SCAD
 
   if(len != 0 | betaold(G1(g)) != 0) {
     for(j = G1(g); j < G1(g+1); j++) {
@@ -90,7 +96,9 @@ List glbin_lcd_sparse_cpp(SEXP X,
                           double eps,
                           int dfmax,
                           int maxiter,
-                          int AIC_stop
+                          int AIC_stop,
+                          int penalty, // 0:lasso 1:mcp 2:scad
+                          double pen_tuning
 ) {
 
   S4 mat(X);
@@ -243,7 +251,7 @@ List glbin_lcd_sparse_cpp(SEXP X,
           if(e(g)!=0) {
             l1 = lambda(l) * group_weight(g) * alpha;// lasso
             l2 = lambda(l) * group_weight(g) * (1-alpha);// ridge
-            gd_binomial_sparse(beta, md, mi, mp, center, scale, r, eta, g, G1, l, l1, l2, df, betaold);
+            gd_binomial_sparse(beta, md, mi, mp, center, scale, r, eta, g, G1, l, l1, l2, df, betaold, penalty, pen_tuning);
           }
         }
 
@@ -264,7 +272,7 @@ List glbin_lcd_sparse_cpp(SEXP X,
         if(e(g)==0) {
           l1 = lambda(l) * group_weight(g) * alpha;// lasso
           l2 = lambda(l) * group_weight(g) * (1-alpha);// ridge
-          gd_binomial_sparse(beta, md, mi, mp, center, scale, r, eta, g, G1, l, l1, l2, df, betaold);
+          gd_binomial_sparse(beta, md, mi, mp, center, scale, r, eta, g, G1, l, l1, l2, df, betaold, penalty, pen_tuning);
           if(beta(G1(g),l) != 0) { // check if group has activated
             e(g) = 1;
             violations++;

@@ -41,15 +41,19 @@ double getXij(NumericVector &data,
 bool checkConvergence(NumericMatrix& beta, NumericVector& betaold, int l, double eps) {
   int j, converged = 1;
   for(j = 0; j < beta.nrow(); j++) {
-    if(beta(j,l) != 0 & betaold(j) != 0) {
-      if( std::abs(beta(j,l) - betaold(j)) > eps  ){
-        converged = 0;
-        break;
-      }
-    } else if( beta(j,l) == 0 & betaold(j) != 0){
-      converged = 0;
-      break;
-    } else if(beta(j,l)!=0 & betaold(j) == 0) {
+    // if(beta(j,l) != 0 & betaold(j) != 0) {
+    //   if( std::abs(beta(j,l) - betaold(j)) > eps  ){
+    //     converged = 0;
+    //     break;
+    //   }
+    // } else if( beta(j,l) == 0 & betaold(j) != 0){
+    //   converged = 0;
+    //   break;
+    // } else if(beta(j,l)!=0 & betaold(j) == 0) {
+    //   converged = 0;
+    //   break;
+    // }
+    if( std::abs(beta(j,l) - betaold(j)) > eps  ){
       converged = 0;
       break;
     }
@@ -70,3 +74,24 @@ double S(double a, double b){
   if(a < -b) return a+b;
   return 0;
 }
+
+// Firm-thresholding operator (from grpreg)
+double F(double z, double l1, double l2, double gamma) {
+  double s=0;
+  if (z > 0) s = 1;
+  else if (z < 0) s = -1;
+  if (std::abs(z) <= l1) return(0);
+  else if (std::abs(z) <= gamma*l1*(1+l2)) return(s*(std::abs(z)-l1)/(1+l2-1/gamma));
+  else return(z/(1+l2));
+}
+// SCAD-modified firm-thresholding operator (from grpreg)
+double Fs(double z, double l1, double l2, double gamma) {
+  double s=0;
+  if (z > 0) s = 1;
+  else if (z < 0) s = -1;
+  if (std::abs(z) <= l1) return(0);
+  else if (std::abs(z) <= (l1*(1+l2)+l1)) return(s*(std::abs(z)-l1)/(1+l2));
+  else if (std::abs(z) <= gamma*l1*(1+l2)) return(s*(std::abs(z)-gamma*l1/(gamma-1))/(1-1/(gamma-1)+l2));
+  else return(z/(1+l2));
+}
+

@@ -1,6 +1,6 @@
 # Make test set 1 with sparse X
 
-P <- 20
+P <- 5
 N <- 200
 beta <- rnorm(P+1, 1, 2) # inc. intercept
 # set first 30% coefficient to zero
