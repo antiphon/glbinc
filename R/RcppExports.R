@@ -2,30 +2,30 @@
 # Generator token: 10BE3573-1514-4C36-9D1C-5A225CD40393
 
 glbin_lcd_cpp <- function(X, y, offset, G0, G1, group_weight, lambda, add_intercept, alpha, verb, eps, dfmax, maxiter, AIC_stop, penalty, pen_tuning) {
-    .Call('glbinc_glbin_lcd_cpp', PACKAGE = 'glbinc', X, y, offset, G0, G1, group_weight, lambda, add_intercept, alpha, verb, eps, dfmax, maxiter, AIC_stop, penalty, pen_tuning)
+    .Call('_glbinc_glbin_lcd_cpp', PACKAGE = 'glbinc', X, y, offset, G0, G1, group_weight, lambda, add_intercept, alpha, verb, eps, dfmax, maxiter, AIC_stop, penalty, pen_tuning)
 }
 
 glbin_lcd_sparse_cpp <- function(X, y, offset, center, scale, G0, G1, group_weight, lambda, add_intercept, alpha, verb, eps, dfmax, maxiter, AIC_stop, penalty, pen_tuning) {
-    .Call('glbinc_glbin_lcd_sparse_cpp', PACKAGE = 'glbinc', X, y, offset, center, scale, G0, G1, group_weight, lambda, add_intercept, alpha, verb, eps, dfmax, maxiter, AIC_stop, penalty, pen_tuning)
+    .Call('_glbinc_glbin_lcd_sparse_cpp', PACKAGE = 'glbinc', X, y, offset, center, scale, G0, G1, group_weight, lambda, add_intercept, alpha, verb, eps, dfmax, maxiter, AIC_stop, penalty, pen_tuning)
 }
 
 glbin_lcd_std_cpp <- function(X, y, offset, G0, G1, group_weight, lambda, add_intercept, alpha, verb, eps, dfmax, maxiter, AIC_stop, penalty, pen_tuning) {
-    .Call('glbinc_glbin_lcd_std_cpp', PACKAGE = 'glbinc', X, y, offset, G0, G1, group_weight, lambda, add_intercept, alpha, verb, eps, dfmax, maxiter, AIC_stop, penalty, pen_tuning)
+    .Call('_glbinc_glbin_lcd_std_cpp', PACKAGE = 'glbinc', X, y, offset, G0, G1, group_weight, lambda, add_intercept, alpha, verb, eps, dfmax, maxiter, AIC_stop, penalty, pen_tuning)
 }
 
 glm_binom_std_c <- function(X, y, offset, center, scale, add_intercept, verb, eps, maxiter, w_limit = 0.25, stability_threshold = 1e-3) {
-    .Call('glbinc_glm_binom_std_c', PACKAGE = 'glbinc', X, y, offset, center, scale, add_intercept, verb, eps, maxiter, w_limit, stability_threshold)
+    .Call('_glbinc_glm_binom_std_c', PACKAGE = 'glbinc', X, y, offset, center, scale, add_intercept, verb, eps, maxiter, w_limit, stability_threshold)
 }
 
 glm_binom_std_sparse_c <- function(X, y, offset, center, scale, add_intercept, verb, eps, maxiter, w_limit = 0.25, stability_threshold = 1e-3) {
-    .Call('glbinc_glm_binom_std_sparse_c', PACKAGE = 'glbinc', X, y, offset, center, scale, add_intercept, verb, eps, maxiter, w_limit, stability_threshold)
+    .Call('_glbinc_glm_binom_std_sparse_c', PACKAGE = 'glbinc', X, y, offset, center, scale, add_intercept, verb, eps, maxiter, w_limit, stability_threshold)
 }
 
 rcpp_hello <- function() {
-    .Call('glbinc_rcpp_hello', PACKAGE = 'glbinc')
+    .Call('_glbinc_rcpp_hello', PACKAGE = 'glbinc')
 }
 
 sparse_c <- function(x) {
-    .Call('glbinc_sparse_c', PACKAGE = 'glbinc', x)
+    .Call('_glbinc_sparse_c', PACKAGE = 'glbinc', x)
 }
 

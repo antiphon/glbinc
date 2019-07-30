@@ -7,7 +7,7 @@ using namespace Rcpp;
 
 // glbin_lcd_cpp
 List glbin_lcd_cpp(NumericMatrix X, NumericVector y, NumericVector offset, int G0, IntegerVector G1, NumericVector group_weight, NumericVector lambda, bool add_intercept, double alpha, int verb, double eps, int dfmax, int maxiter, int AIC_stop, int penalty, double pen_tuning);
-RcppExport SEXP glbinc_glbin_lcd_cpp(SEXP XSEXP, SEXP ySEXP, SEXP offsetSEXP, SEXP G0SEXP, SEXP G1SEXP, SEXP group_weightSEXP, SEXP lambdaSEXP, SEXP add_interceptSEXP, SEXP alphaSEXP, SEXP verbSEXP, SEXP epsSEXP, SEXP dfmaxSEXP, SEXP maxiterSEXP, SEXP AIC_stopSEXP, SEXP penaltySEXP, SEXP pen_tuningSEXP) {
+RcppExport SEXP _glbinc_glbin_lcd_cpp(SEXP XSEXP, SEXP ySEXP, SEXP offsetSEXP, SEXP G0SEXP, SEXP G1SEXP, SEXP group_weightSEXP, SEXP lambdaSEXP, SEXP add_interceptSEXP, SEXP alphaSEXP, SEXP verbSEXP, SEXP epsSEXP, SEXP dfmaxSEXP, SEXP maxiterSEXP, SEXP AIC_stopSEXP, SEXP penaltySEXP, SEXP pen_tuningSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -33,7 +33,7 @@ END_RCPP
 }
 // glbin_lcd_sparse_cpp
 List glbin_lcd_sparse_cpp(SEXP X, NumericVector y, NumericVector offset, NumericVector center, NumericVector scale, int G0, IntegerVector G1, NumericVector group_weight, NumericVector lambda, bool add_intercept, double alpha, int verb, double eps, int dfmax, int maxiter, int AIC_stop, int penalty, double pen_tuning);
-RcppExport SEXP glbinc_glbin_lcd_sparse_cpp(SEXP XSEXP, SEXP ySEXP, SEXP offsetSEXP, SEXP centerSEXP, SEXP scaleSEXP, SEXP G0SEXP, SEXP G1SEXP, SEXP group_weightSEXP, SEXP lambdaSEXP, SEXP add_interceptSEXP, SEXP alphaSEXP, SEXP verbSEXP, SEXP epsSEXP, SEXP dfmaxSEXP, SEXP maxiterSEXP, SEXP AIC_stopSEXP, SEXP penaltySEXP, SEXP pen_tuningSEXP) {
+RcppExport SEXP _glbinc_glbin_lcd_sparse_cpp(SEXP XSEXP, SEXP ySEXP, SEXP offsetSEXP, SEXP centerSEXP, SEXP scaleSEXP, SEXP G0SEXP, SEXP G1SEXP, SEXP group_weightSEXP, SEXP lambdaSEXP, SEXP add_interceptSEXP, SEXP alphaSEXP, SEXP verbSEXP, SEXP epsSEXP, SEXP dfmaxSEXP, SEXP maxiterSEXP, SEXP AIC_stopSEXP, SEXP penaltySEXP, SEXP pen_tuningSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -61,7 +61,7 @@ END_RCPP
 }
 // glbin_lcd_std_cpp
 List glbin_lcd_std_cpp(NumericMatrix X, NumericVector y, NumericVector offset, int G0, IntegerVector G1, NumericVector group_weight, NumericVector lambda, bool add_intercept, double alpha, int verb, double eps, int dfmax, int maxiter, int AIC_stop, int penalty, double pen_tuning);
-RcppExport SEXP glbinc_glbin_lcd_std_cpp(SEXP XSEXP, SEXP ySEXP, SEXP offsetSEXP, SEXP G0SEXP, SEXP G1SEXP, SEXP group_weightSEXP, SEXP lambdaSEXP, SEXP add_interceptSEXP, SEXP alphaSEXP, SEXP verbSEXP, SEXP epsSEXP, SEXP dfmaxSEXP, SEXP maxiterSEXP, SEXP AIC_stopSEXP, SEXP penaltySEXP, SEXP pen_tuningSEXP) {
+RcppExport SEXP _glbinc_glbin_lcd_std_cpp(SEXP XSEXP, SEXP ySEXP, SEXP offsetSEXP, SEXP G0SEXP, SEXP G1SEXP, SEXP group_weightSEXP, SEXP lambdaSEXP, SEXP add_interceptSEXP, SEXP alphaSEXP, SEXP verbSEXP, SEXP epsSEXP, SEXP dfmaxSEXP, SEXP maxiterSEXP, SEXP AIC_stopSEXP, SEXP penaltySEXP, SEXP pen_tuningSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -87,7 +87,7 @@ END_RCPP
 }
 // glm_binom_std_c
 List glm_binom_std_c(NumericMatrix X, NumericVector y, NumericVector offset, NumericVector center, NumericVector scale, bool add_intercept, int verb, double eps, int maxiter, double w_limit, double stability_threshold);
-RcppExport SEXP glbinc_glm_binom_std_c(SEXP XSEXP, SEXP ySEXP, SEXP offsetSEXP, SEXP centerSEXP, SEXP scaleSEXP, SEXP add_interceptSEXP, SEXP verbSEXP, SEXP epsSEXP, SEXP maxiterSEXP, SEXP w_limitSEXP, SEXP stability_thresholdSEXP) {
+RcppExport SEXP _glbinc_glm_binom_std_c(SEXP XSEXP, SEXP ySEXP, SEXP offsetSEXP, SEXP centerSEXP, SEXP scaleSEXP, SEXP add_interceptSEXP, SEXP verbSEXP, SEXP epsSEXP, SEXP maxiterSEXP, SEXP w_limitSEXP, SEXP stability_thresholdSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -108,7 +108,7 @@ END_RCPP
 }
 // glm_binom_std_sparse_c
 List glm_binom_std_sparse_c(SEXP X, NumericVector y, NumericVector offset, NumericVector center, NumericVector scale, bool add_intercept, int verb, double eps, int maxiter, double w_limit, double stability_threshold);
-RcppExport SEXP glbinc_glm_binom_std_sparse_c(SEXP XSEXP, SEXP ySEXP, SEXP offsetSEXP, SEXP centerSEXP, SEXP scaleSEXP, SEXP add_interceptSEXP, SEXP verbSEXP, SEXP epsSEXP, SEXP maxiterSEXP, SEXP w_limitSEXP, SEXP stability_thresholdSEXP) {
+RcppExport SEXP _glbinc_glm_binom_std_sparse_c(SEXP XSEXP, SEXP ySEXP, SEXP offsetSEXP, SEXP centerSEXP, SEXP scaleSEXP, SEXP add_interceptSEXP, SEXP verbSEXP, SEXP epsSEXP, SEXP maxiterSEXP, SEXP w_limitSEXP, SEXP stability_thresholdSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -129,7 +129,7 @@ END_RCPP
 }
 // rcpp_hello
 List rcpp_hello();
-RcppExport SEXP glbinc_rcpp_hello() {
+RcppExport SEXP _glbinc_rcpp_hello() {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -139,7 +139,7 @@ END_RCPP
 }
 // sparse_c
 NumericMatrix sparse_c(SEXP x);
-RcppExport SEXP glbinc_sparse_c(SEXP xSEXP) {
+RcppExport SEXP _glbinc_sparse_c(SEXP xSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -150,13 +150,13 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"glbinc_glbin_lcd_cpp", (DL_FUNC) &glbinc_glbin_lcd_cpp, 16},
-    {"glbinc_glbin_lcd_sparse_cpp", (DL_FUNC) &glbinc_glbin_lcd_sparse_cpp, 18},
-    {"glbinc_glbin_lcd_std_cpp", (DL_FUNC) &glbinc_glbin_lcd_std_cpp, 16},
-    {"glbinc_glm_binom_std_c", (DL_FUNC) &glbinc_glm_binom_std_c, 11},
-    {"glbinc_glm_binom_std_sparse_c", (DL_FUNC) &glbinc_glm_binom_std_sparse_c, 11},
-    {"glbinc_rcpp_hello", (DL_FUNC) &glbinc_rcpp_hello, 0},
-    {"glbinc_sparse_c", (DL_FUNC) &glbinc_sparse_c, 1},
+    {"_glbinc_glbin_lcd_cpp", (DL_FUNC) &_glbinc_glbin_lcd_cpp, 16},
+    {"_glbinc_glbin_lcd_sparse_cpp", (DL_FUNC) &_glbinc_glbin_lcd_sparse_cpp, 18},
+    {"_glbinc_glbin_lcd_std_cpp", (DL_FUNC) &_glbinc_glbin_lcd_std_cpp, 16},
+    {"_glbinc_glm_binom_std_c", (DL_FUNC) &_glbinc_glm_binom_std_c, 11},
+    {"_glbinc_glm_binom_std_sparse_c", (DL_FUNC) &_glbinc_glm_binom_std_sparse_c, 11},
+    {"_glbinc_rcpp_hello", (DL_FUNC) &_glbinc_rcpp_hello, 0},
+    {"_glbinc_sparse_c", (DL_FUNC) &_glbinc_sparse_c, 1},
     {NULL, NULL, 0}
 };
 

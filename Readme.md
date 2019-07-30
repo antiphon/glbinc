@@ -8,4 +8,4 @@ Several Lasso solvers for logistic regression can be found in CRAN. I needed one
 
 None existed that fullfilled all requirements.
 
-The `grpreg` R-package code studied for parts of the c-code.
+The `grpreg` R-package code was studied for parts of the c-code.
